@@ -27,5 +27,5 @@ services:
     networks:
       - lamp-network
 networks:
-  mbot-network:
+  lamp-network:
       driver: bridge
