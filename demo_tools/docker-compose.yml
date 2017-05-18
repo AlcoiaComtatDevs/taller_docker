@@ -8,7 +8,7 @@ services:
       - "6080"
 
     volumes:
-      - ~/Sites/docker/taller_docker/demo_tools/hound:/data
+      - ./hound:/data
       
   portainer:
     image: portainer/portainer
