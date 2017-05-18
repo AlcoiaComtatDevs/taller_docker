@@ -1,0 +1,37 @@
+version: '2'
+services:
+  hound:
+    image: etsy/hound
+    restart: always
+    container_name: hound
+    ports:
+      - "6080"
+
+    volumes:
+      - ~/Sites/docker/taller_docker/demo_tools/hound:/data
+      
+  portainer:
+    image: portainer/portainer
+    restart: always
+    container_name: portainer
+    ports:
+      - "9000"
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  
+      - ~/Sites/docker/taller_docker/demo_tools/portainer:/data
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    restart: always
+    build: .
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+    links:
+      - hound
+      - portainer  

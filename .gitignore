@@ -1,1 +1,3 @@
 .DS_STORE
+/demo_tools/hound/data/
+/demo_tools/portainer/portainer.db
